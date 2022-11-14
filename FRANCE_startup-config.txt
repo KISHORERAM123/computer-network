@@ -1,0 +1,87 @@
+!
+version 12.4
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname FRANCE
+!
+!
+!
+!
+!
+!
+!
+!
+no ip cef
+no ipv6 cef
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip ftp username kishore
+ip ftp password ram
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface FastEthernet0/0
+ ip address 40.0.0.1 255.0.0.0
+ duplex auto
+ speed auto
+!
+interface FastEthernet0/1
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface Serial0/0/0
+ ip address 20.0.0.2 255.0.0.0
+!
+interface Serial0/0/1
+ ip address 30.0.0.1 255.0.0.0
+ clock rate 64000
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+ip classless
+ip route 10.0.0.0 255.0.0.0 20.0.0.1 
+ip route 50.0.0.0 255.0.0.0 30.0.0.2 
+!
+ip flow-export version 9
+!
+!
+!
+no cdp run
+!
+!
+!
+!
+!
+logging trap debugging
+logging 40.0.0.2
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end
+
